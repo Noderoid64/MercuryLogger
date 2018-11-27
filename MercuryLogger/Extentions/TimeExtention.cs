@@ -34,11 +34,11 @@ namespace MercuryLogger.Extentions
             if (ShowMillisecond)
                 builder.Append(time.Millisecond + ":");
             builder.Append("]");
-            builder.Replace(":]", "]");
+            builder.Replace(":]", "] ");
 
             value = builder.ToString() + value;
 
-
+            LogAll(value);
         }
     }
 }

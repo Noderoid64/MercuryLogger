@@ -1,3 +1,5 @@
+using System;
+
 namespace MercuryLogger
 {
     public class GlobalLogger : Logger
@@ -7,7 +9,7 @@ namespace MercuryLogger
         static GlobalLogger instance;
         private GlobalLogger() { }
 
-        public GlobalLogger GetInstance()
+        public static GlobalLogger GetInstance()
         {
             lock (SyncObject)
             {
@@ -25,9 +27,9 @@ namespace MercuryLogger
                 {
                     LogAll(value);
                 }
-                catch ()
+                catch (Exception e)
                 {
-
+                    HandleAll(e);
                 }
 
             }

@@ -6,23 +6,33 @@ namespace MercuryLogger.Loggers
 {
     public class FileLogger : Logger
     {
-        StreamWriter sw;
-        public FileLogger(string path)
+        string path;
+        string name;
+        Encoding encoding;
+        bool append;
+
+        public FileLogger(string path) : this(path, DateTime.Now.Hour + "." + DateTime.Now.Minute + "." + DateTime.Now.Second + ".txt")
         {
 
         }
-        public FileLogger(string path, string name)
+        public FileLogger(string path, string name) : this(path, name, Encoding.Default, true)
         {
 
         }
-        public FileLogger(string path, string name, Encoding encoding, bool Append)
+        public FileLogger(string path, string name, Encoding encoding, bool append)
         {
-            sw = new StreamWriter(path + name, Append, encoding);
+            this.path = path;
+            this.name = name;
+            this.encoding = encoding;
+            this.append = append;
         }
 
         public override void Log(string value)
         {
-            throw new NotImplementedException();
+            using (StreamWriter sw = new StreamWriter(path + "/" + name, append, encoding))
+            {
+                sw.WriteLine(value);
+            }
         }
     }
 }

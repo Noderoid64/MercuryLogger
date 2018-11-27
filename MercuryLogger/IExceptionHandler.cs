@@ -4,7 +4,7 @@ namespace MercuryLogger
 {
     public interface IExceptionHandler
     {
-        void Hand();
+        void Hand(Exception e);
         IExceptionHandler Component { get; set; }
     }
 }
