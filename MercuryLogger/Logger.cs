@@ -4,9 +4,8 @@ namespace MercuryLogger
 {
     public abstract class Logger
     {
-        public abstract void Log(string value);
+        
         List<Logger> loggers;
-        public IExceptionHandler handler { get; set; }
         public Logger()
         {
             loggers = new List<Logger>();
@@ -15,21 +14,7 @@ namespace MercuryLogger
         {
             loggers.Add(logger);
         }
-        public void ExceptionHandle(Exception e)
-        {
-            try
-            {
-                handler.Hand(e);
-            }
-            catch (Exception ee)
-            {
-                HandleAll(ee);
-            }
-            finally
-            {
-                HandleAll(e);
-            }
-        }
+        public abstract void Log(string value);
         protected void LogAll(string message)
         {
             foreach (var item in loggers)
@@ -37,12 +22,6 @@ namespace MercuryLogger
                 item.Log(message);
             }
         }
-        protected void HandleAll(Exception e)
-        {
-            foreach (var item in loggers)
-            {
-                item.ExceptionHandle(e);
-            }
-        }
+        
     }
 }

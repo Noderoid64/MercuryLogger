@@ -19,23 +19,23 @@ namespace MercuryLogger.Extentions
         {
             Thread t = Thread.CurrentThread;
             StringBuilder builder = new StringBuilder(400);
-            builder.Append("ThreadExtention:\n");
+            builder.Append("ThreadExtention: |");
             if(IsAlive)
-            builder.Append("Is Alive:           " + t.IsAlive + "\n");
+            builder.Append("Is Alive:           " + t.IsAlive + "|");
                         if(IsBackground)
-            builder.Append("Is Background:      " + t.IsBackground + "\n");
+            builder.Append("Is Background:      " + t.IsBackground + "|");
                         if(IsThreadPoolThread)
-            builder.Append("Is ThreadPoolThread:" + t.IsThreadPoolThread + "\n");
+            builder.Append("Is ThreadPoolThread:" + t.IsThreadPoolThread + "|");
                         if(ManagedThreadId)
-            builder.Append("Is ManagedThreadId: " + t.ManagedThreadId + "\n");
+            builder.Append("Is ManagedThreadId: " + t.ManagedThreadId + "|");
                         if(Name)
-            builder.Append("Name:               " + t.Name + "\n");
+            builder.Append("Name:               " + t.Name + "|");
                         if(Priority)
-            builder.Append("Priority:           " + t.Priority + "\n");
+            builder.Append("Priority:           " + t.Priority + "|");
                         if(ThreadState)
-            builder.Append("ThreadState:        " + t.ThreadState + "\n");
+            builder.Append("ThreadState:        " + t.ThreadState + "|");
                         if(ExecutionContext)
-            builder.Append("ExecutionContext:   " + t.ExecutionContext + "\n");
+            builder.Append("ExecutionContext:   " + t.ExecutionContext + "|");
 
             LogAll(builder.ToString() + value);
         }
